@@ -13,7 +13,8 @@ class Rover
       if chr == "M"
         move
       else
-        turn(chr.upcase)
+        turn(chr)
+      end
     end
   end
 
@@ -29,7 +30,7 @@ class Rover
     end
   end
 
-  def turn_right(heading)
+  def turn(heading)
     if heading == "R"
       if @direction == "N"
         @direction = "E"
@@ -51,40 +52,31 @@ class Rover
         @direction = "N"
       end
     end
-
-
-
-
-
-  end
-
-  def turn_left(heading)
-
   end
 
 end
 
-rover1 = Rover.new()
 
-p "plateau size"
+# USER PROPMTS FOR ROVER DATA
+puts "enter the size of your plateau (please enter two numbers like so: 5 5):"
 plateau = gets.chomp.split
-p "Where is the Rover?"
+
+puts "Please enter the current location of the Rover:"
 rover_init = gets.chomp.split
 
-@x_coordinate = rover_init[0].to_i
-@y_coordinate = rover_init[1].to_i
-@direction = rover_init[2]
-puts "#{@x_coordinate}, #{@y_coordinate}, #{@direction}"
+# DATA STORED IN ARRAY WITH SPECIFIED INDEX
+x_coordinate = rover_init[0].to_i
+y_coordinate = rover_init[1].to_i
+direction = rover_init[2]
+# => [x_coordinate, y_coordinate, direction]
 
-x_max == plateau[0].to_i
-y_max == plateau[1].to_i
+rover1 = Rover.new(x_coordinate[0], y_coordinate[1], direction[2])
+puts "#{x_coordinate}, #{y_coordinate}, #{direction}"
 
+puts "Please enter the commands for the rover (for example us M to move, L to turn left and R to turn right)"
+direction_array = gets.chomp.upcase.split
 
-p "Rover commands"
-direction_array = gets.chomp.split
+puts "The current location of the Rover is #{x_coordinate}, #{y_coordinate}, #{direction}"
 
-direction_array.each do |direction|
-  if direction == l
-
-
-end
+# x_max == plateau[0].to_i
+# y_max == plateau[1].to_i

@@ -8,9 +8,13 @@ class Rover
     @direction = direction
   end
 
-  def read_instruction
-    if turn
-
+  def read_instruction(instruction)
+    instruction.each_char do |chr|
+      if chr == "M"
+        move
+      else
+        turn(chr.upcase)
+    end
   end
 
   def move
@@ -25,19 +29,44 @@ class Rover
     end
   end
 
-  def turn
-    if l
-      @direction =
-    elsif r
-      @direction =
+  def turn_right(heading)
+    if heading == "R"
+      if @direction == "N"
+        @direction = "E"
+      elsif @direction == "E"
+        @direction = "S"
+      elsif @direction == "S"
+        @direction = "W"
+      elsif @direction == "W"
+        @direction = "N"
+      end
+    elsif heading == "L"
+      if @direction == "N"
+        @direction = "W"
+      elsif @direction == "W"
+        @direction = "S"
+      elsif @direction == "S"
+        @direction = "E"
+      elsif @direction == "E"
+        @direction = "N"
+      end
     end
+
+
+
+
+
+  end
+
+  def turn_left(heading)
+
   end
 
 end
 
 rover1 = Rover.new()
 
-p "plataeu size"
+p "plateau size"
 plateau = gets.chomp.split
 p "Where is the Rover?"
 rover_init = gets.chomp.split
@@ -49,3 +78,13 @@ puts "#{@x_coordinate}, #{@y_coordinate}, #{@direction}"
 
 x_max == plateau[0].to_i
 y_max == plateau[1].to_i
+
+
+p "Rover commands"
+direction_array = gets.chomp.split
+
+direction_array.each do |direction|
+  if direction == l
+
+
+end
